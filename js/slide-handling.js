@@ -7,14 +7,18 @@ function goToNextSlide () {
         $nextNextSlide = $nextSlide.next('.slide');
     
     if ( $nextSlide.length > 0 ) {
-        console.log( 'Moving forward one to slide.' );
+        console.log( 'Moving forward one slide.' );
         $previousSlide.removeClass('previous-slide');
         $currentSlide.addClass('previous-slide');
         $currentSlide.removeClass('current-slide');
         $nextSlide.removeClass('next-slide');
         $nextSlide.addClass('current-slide');
         $nextNextSlide.addClass('next-slide');
-        //window.history.pushState(null, null, $('.slide').index('.current-slide') + 1);
+        var slideNo = $('.current-slide').index() + 1;
+        //window.history.pushState(null, null, slideNo);
+        console.log('Currently on slide ' + slideNo);
+        dataHandler($nextSlide);
+        $currentSlide.find('svg.slype-graph').remove();
         return( $nextSlide )
     } else {
         console.log( 'Already on the last slide.' );
@@ -36,7 +40,11 @@ function goToPreviousSlide () {
         $previousSlide.removeClass('previous-slide');
         $previousSlide.addClass('current-slide');
         $previousPreviousSlide.addClass('previous-slide');
-        //window.history.pushState(null, null, $('.slide').index('.current-slide') + 1);
+        var slideNo = $('.current-slide').index() + 1;
+        //window.history.pushState(null, null, slideNo);
+        console.log('Currently on slide ' + slideNo);
+        dataHandler($previousSlide);
+        $currentSlide.find('svg.slype-graph').remove();
         return( $previousSlide )
     } else {
         console.log( 'Already on the first slide.' );
@@ -90,5 +98,6 @@ function slideTransition () {
     });
     
     $window.on('swipeleft', goToNextSlide);
+    $window.on('tap', goToNextSlide);
     $window.on('swiperight', goToPreviousSlide);
 }
