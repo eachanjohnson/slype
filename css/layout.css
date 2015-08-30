@@ -101,3 +101,16 @@ html, body {
     max-width: 66.67vw;
     border: 1px solid black;
 }
+
+circle {
+    fill: white;
+    transition: fill 3s linear;
+}
+
+.scatter-series-0 {
+    fill: red;
+}
+
+.scatter-series-1 {
+    fill: green;
+}

@@ -36,7 +36,7 @@ function scatterPlot ( data ) {
         var currentSeriesName = seriesNames[i],
             currentGroup = svg.append('g').attr('id', 'group-' + currentSeriesName);
         
-        console.log('Working on series ' + currentSeriesName + ' which has id ' + currentGroup.attr('id'));
+        console.log('Working on series ' + currentSeriesName + ' which has id ' + currentGroup.attr('id') + ' and class scatter-series-' + i);
         
         groups.push(currentGroup);
         
@@ -52,12 +52,11 @@ function scatterPlot ( data ) {
             })
             .attr('r', 5)
             .attr('opacity', 0.5)
-            .style('fill', 'white')
             .attr('stroke', 'black')
             .attr('stroke-width', 1)
-            .transition().delay(500).duration(3000)
-            .style('fill', colors[i])
-            .attr('stroke-width', 0)
+            .transition().delay(1000).duration(3000)
+                .attr('class', 'scatter-series-' + i)
+                .attr('stroke-width', 0)
     }
     
     $graphCanvas.removeAttr('id');
