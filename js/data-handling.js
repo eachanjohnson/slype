@@ -52,7 +52,12 @@ function scatterPlot ( data ) {
             })
             .attr('r', 5)
             .attr('opacity', 0.5)
+            .style('fill', 'white')
+            .attr('stroke', 'black')
+            .attr('stroke-width', 1)
+            .transition().delay(500).duration(3000)
             .style('fill', colors[i])
+            .attr('stroke-width', 0)
     }
     
     $graphCanvas.removeAttr('id');
