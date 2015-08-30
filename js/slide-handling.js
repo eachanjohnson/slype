@@ -7,13 +7,14 @@ function goToNextSlide () {
         $nextNextSlide = $nextSlide.next('.slide');
     
     if ( $nextSlide.length > 0 ) {
-        console.log( 'Moving forward one slide.' );
+        console.log( 'Moving forward one to slide.' );
         $previousSlide.removeClass('previous-slide');
         $currentSlide.addClass('previous-slide');
         $currentSlide.removeClass('current-slide');
         $nextSlide.removeClass('next-slide');
         $nextSlide.addClass('current-slide');
         $nextNextSlide.addClass('next-slide');
+        //window.history.pushState(null, null, $('.slide').index('.current-slide') + 1);
         return( $nextSlide )
     } else {
         console.log( 'Already on the last slide.' );
@@ -35,6 +36,7 @@ function goToPreviousSlide () {
         $previousSlide.removeClass('previous-slide');
         $previousSlide.addClass('current-slide');
         $previousPreviousSlide.addClass('previous-slide');
+        //window.history.pushState(null, null, $('.slide').index('.current-slide') + 1);
         return( $previousSlide )
     } else {
         console.log( 'Already on the first slide.' );
@@ -52,7 +54,8 @@ function toggleDark () {
 
 function slideTransition () {
     // Listen for keyboard and act apprpriately
-    var $body = $('body');
+    var $body = $('body'),
+        $window = $(window);
     
     $body.keyup(function ( event ) {
         var keyPressed = String.fromCharCode( event.which );
@@ -81,4 +84,11 @@ function slideTransition () {
                 console.log( 'Key pressed, but not taking any transition action' );
        }
     });
+    
+    $body.click(function ( event ) {
+        goToNextSlide();
+    });
+    
+    $window.on('swipeleft', goToNextSlide);
+    $window.on('swiperight', goToPreviousSlide);
 }
