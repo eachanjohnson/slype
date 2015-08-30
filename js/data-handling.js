@@ -64,7 +64,7 @@ function dataHandler ( $domObject ) {
     
     for ( var i = 0; i < $graphs.length; i++ ) {
         var $currentGraph = $graphs[i];
-        var currentPath = '../' + $currentGraph.getAttribute('data-csv');
+        var currentPath = $currentGraph.getAttribute('data-csv');
         
         console.log('Loading data from ' + currentPath);
         csvPaths.push(currentPath);
