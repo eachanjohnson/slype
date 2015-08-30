@@ -1,0 +1,82 @@
+/** Slype layout CSS **/
+
+/** reset **/
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100vw;
+    overflow: hidden;
+    background-color: floralwhite;
+}
+
+.black-out {
+    background-color: black;
+}
+
+/** define slides **/
+.slide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: floralwhite;
+    visibility: hidden;
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: visibility 0s, opacity 2s;
+}
+
+.current-slide {
+    visibility: visible;
+    opacity: 1;
+    z-index: 200;
+}
+
+.next-slide {
+    z-index: 100;
+}
+
+.previous-slide {
+    z-index: 0;
+}
+
+/** define arrangement of elements on slides **/
+.title-slide {
+    
+}
+
+.title-slide h1 {
+    font-size: 4.5em;
+    margin-top: 33vh;
+    margin-left: 8.33vw;
+    margin-left: 8.33vw;
+    text-align: left;
+}
+
+.title-slide h3 {
+    font-size: 2.25em;
+    margin-top: 8.33vh;
+    margin-right: 8.33vw;
+    float: right;
+    text-align: right;
+}
+
+.text-slide h2 {
+    font-size: 4.5em;
+    margin-top: 8.33vh;
+    margin-left: 8.33vw;
+    margin-right: 8.33vw;
+    text-align: left;
+}
+
+.text-slide p {
+    font-size: 2.25em;
+    margin-top: 8.33vh;
+    margin-left: 16.67vw;
+    margin-right: 8.33vw;
+    text-align: left;
+}

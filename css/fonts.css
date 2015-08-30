@@ -1,0 +1,26 @@
+/** Slype fonts **/
+
+/** import Google fonts **/
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700|EB+Garamond|Oxygen:400,700);
+
+
+/** Define font useage **/
+h1 {
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 400;
+}
+
+h2, h3, h4, h5 {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+}
+
+p {
+    font-family: 'EB Garamond', serif;
+    font-weight: 400;
+}
+
+strong {
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 700;
+}

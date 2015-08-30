@@ -1,0 +1,50 @@
+<!--
+
+SLYPE by Eachan Johnson
+
+Slype: n.
+"A covered way or passage, esp. one lying between the transept of a cathedral or monastic church and the chapter-house, and commonly leading out from the cloister."
+    -- Oxford English Dictionary
+
+Also, a portmanteau of "slide" and "swipe". 
+
+Slype is a framework using HTML, CSS, and JavaScript intended in particular for data-driven slideshows. D3.js supplies the data-awareness.
+
+-->
+
+<html>
+
+    <head>
+        <link rel="stylesheet" href="css/fonts.css">
+        <link rel="stylesheet" href="css/layout.css">
+        <link rel="stylesheet" href="css/main.css">
+        <title>Test presentation</title>
+    </head>
+    
+    <body>
+        <section class="slide title-slide current-slide">
+            <h1>Welcome to my test slide-deck</h1>
+            <h3>Eachan Johnson</h3>
+        </section>
+        
+        <section class="slide text-slide next-slide">
+            <h2>This is slide 1</h2>
+            <p>Bacon ipsum dolor amet deserunt adipisicing do shank filet mignon, turkey labore fatback ground round est. Proident duis dolor nisi drumstick sed meatball do bresaola short loin ex filet mignon culpa. Ea eu aliquip, frankfurter velit shank short loin in. Minim sirloin ribeye, laboris dolor ham chuck pariatur sunt tri-tip shank. Leberkas tongue lorem, sunt jerky shoulder bacon ut prosciutto sed ground round reprehenderit veniam labore. Veniam shank mollit meatloaf pork chop exercitation short loin drumstick dolore tongue consectetur dolore reprehenderit. Short loin proident jerky, flank doner sed spare ribs ea.</p>
+        </section>
+        
+        <section class="slide text-slide">
+            <h2>This is slide 2</h2>
+            <p>Tongue kielbasa ground round landjaeger beef. Dolore cillum ut turkey in kielbasa in porchetta alcatra labore. Consectetur tri-tip brisket landjaeger, ball tip corned beef sausage sunt. Boudin eiusmod dolor rump porchetta, meatball dolore shank ham hock enim occaecat laboris. Capicola corned beef irure ullamco picanha brisket. Nostrud ham ut, alcatra short loin ham hock in tail nisi.</p>
+        </section>
+        
+        <!--
+        Here's the script import section
+        -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="js/slide-handling.js"></script>
+        <script src="js/main.js"></script>
+        
+    </body>
+
+
+</html>
