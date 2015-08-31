@@ -5,6 +5,7 @@
     border: 0;
     margin: 0;
     padding: 0;
+    color: black;
 }
 
 html, body {
@@ -67,11 +68,10 @@ html, body {
     margin-left: 16.67vw;
     margin-right: 8.33vw;
     text-align: left;
-    height: 58.33vh;
 }
 
 .columns-2 .column {
-    margin-left:8.33vw;
+    margin-left: 8.33vw;
     margin-right: 0vw;
     width: 40vw;
     float: left;
@@ -98,8 +98,12 @@ html, body {
 }
 
 .data-slide div {
-    max-width: 66.67vw;
-    border: 1px solid black;
+    /**max-width: 66.67vw;**/
+    margin-left: 8.33vw;
+}
+
+.graph {
+    min-height: 50vh;
 }
 
 circle {
@@ -113,4 +117,16 @@ circle {
 
 .scatter-series-1 {
     fill: green;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
 }

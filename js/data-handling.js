@@ -3,7 +3,8 @@
 function scatterPlot ( data ) {    
     var $graphCanvas = $('#current-graph'),
         w = $graphCanvas.innerWidth(),
-        h = $graphCanvas.innerHeight();
+        h = $graphCanvas.innerHeight(),
+        padding = 0.08 * $graphCanvas.innerHeight();
     
     console.log('Current canvas width is ' + w + ' and current height is ' + h);
     //console.log(data);
@@ -14,15 +15,17 @@ function scatterPlot ( data ) {
                     .attr('class', 'slype-graph'),
         scaleX = d3.scale.linear()
                         .domain([0, 100])
-                        .range([0, w]),
+                        .range([padding, w - padding / 2]),
         scaleY = d3.scale.linear()
                         .domain([0, 100])
-                        .range([0, h]),
+                        .range([h - padding, padding / 2]),
+        axisX = d3.svg.axis().scale(scaleX).orient('bottom'),
+        axisY = d3.svg.axis().scale(scaleY).orient('left'),
         noOfSeries = Object.keys(data[0]).length - 1,
         seriesNames = new Array,
         seriesReport = 'Series names: ',
         groups = new Array,
-        colors = ['red', 'green'];
+        colors = ['red', 'green', 'blue'];
     
     for ( var i = 1; i <  Object.keys(data[0]).length; i++ ) {
         var currentSeriesName = Object.keys(data[0])[i];
@@ -31,6 +34,12 @@ function scatterPlot ( data ) {
     }
     console.log('There are ' + noOfSeries + ' data series');
     console.log(seriesReport);
+    
+    svg.append('g').attr('class', 'axis').attr("transform", "translate(0, " + (h - padding) + ")")
+        .call(axisX);
+    
+    svg.append('g').attr('class', 'axis').attr("transform", "translate(" + padding + ", 0)")
+        .call(axisY);
     
     for ( var i = 0; i < seriesNames.length; i++ ) {
         var currentSeriesName = seriesNames[i],
@@ -44,19 +53,17 @@ function scatterPlot ( data ) {
             .data(data)
             .enter()
             .append('circle')
+            .attr('class', 'scatter-series-' + i)
             .attr('cx', function (d) {
                 return( scaleX(d['x']) )
             })
             .attr('cy', function (d) {
                 return( scaleY(d[seriesNames[i]]) )
             })
-            .attr('r', 5)
+            .attr('r', 0)
             .attr('opacity', 0.5)
-            .attr('stroke', 'black')
-            .attr('stroke-width', 1)
-            .transition().delay(1000).duration(3000)
-                .attr('class', 'scatter-series-' + i)
-                .attr('stroke-width', 0)
+            .transition().delay(500).duration(3000)
+                .attr('r', 8)
     }
     
     $graphCanvas.removeAttr('id');

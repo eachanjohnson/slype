@@ -24,3 +24,14 @@ strong {
     font-family: 'Oxygen', sans-serif;
     font-weight: 700;
 }
+
+a {
+    text-decoration: none;
+    font-family: 'Oxygen', sans-serif;
+    font-weight: 700;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+}
