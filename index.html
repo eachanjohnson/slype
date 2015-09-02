@@ -6,7 +6,7 @@ Slype: n.
 "A covered way or passage, esp. one lying between the transept of a cathedral or monastic church and the chapter-house, and commonly leading out from the cloister."
     -- Oxford English Dictionary
 
-Also, a portmanteau of "slide" and "swipe". 
+Also, a portmanteau of "slide" and "swipe".
 
 Slype is a framework using HTML, CSS, and JavaScript intended in particular for data-driven slideshows. D3.js supplies the data-awareness.
 
@@ -23,36 +23,43 @@ Slype is a framework using HTML, CSS, and JavaScript intended in particular for 
         <!--<meta name = "viewport" content = "initial-scale = 1.0, width = device-width">-->
         <title>Slype demo | Eachan Johnson</title>
     </head>
-    
-    <body> 
-        
+
+    <body>
+
         <section class="slide title-slide">
             <h1>Slype.</h1>
             <h3>A data-aware, browser-based slideshow framework</h3>
         </section>
-        
+
         <section class="slide text-slide">
             <h2>Slype is a slideshow framework.</h2>
             <p>As you'd expect, it handles text slides with aplomb. Layouts are determined by CSS, so style is separated from content: you're free to focus on what you're saying, and recycle styles and formats.</p>
         </section>
-        
+
         <section class="slide text-slide columns-2">
             <h2>Slype has two-column layouts.</h2>
             <h3>And sub-headings, too.</h3>
             <p class="column">Tongue kielbasa ground round landjaeger beef. Dolore cillum ut turkey in kielbasa in porchetta alcatra labore. Consectetur tri-tip brisket landjaeger, ball tip corned beef sausage sunt. Boudin eiusmod dolor rump porchetta, meatball dolore shank ham hock enim occaecat laboris. Capicola corned beef irure ullamco picanha brisket. Nostrud ham ut, alcatra short loin ham hock in tail nisi.</p>
             <p class="column">Bacon ipsum dolor amet deserunt adipisicing do shank filet mignon, turkey labore fatback ground round est. Proident duis dolor nisi drumstick sed meatball do bresaola short loin ex filet mignon culpa. Ea eu aliquip, frankfurter velit shank short loin in. Minim sirloin ribeye, laboris dolor ham chuck pariatur sunt tri-tip shank.</p>
         </section>
-        
+
         <section class="slide data-slide">
-            <h2>Slype is data-aware.</h2><p>Scatterplots are generated from CSV files. When you edit the data in the background, the slide updates. And it looks pretty good too!</p>
-            <div class="graph scatter" data-csv="data/test-data.csv"></div>
+            <h2>Slype is data-aware.</h2>
+            <p>Scatterplots are generated from CSV files. When you edit the data in the background, the slide updates. And it looks pretty good too!</p>
+            <div class="graph scatter" data-csv="data/test-scatter-data.csv"></div>
         </section>
         
+        <section class="slide data-slide">
+            <h2>Slype has bouncy bar charts.</h2>
+            <p>No effort from you, lots of appreciation from your audience.</p>
+            <div class="graph bar" data-csv="data/test-bar-data.csv"></div>
+        </section>
+
         <section class="slide title-slide">
             <h1>Slype.</h1>
             <h3><a href="//github.com/eachanjohnson/slype" target="_blank">Fork me on GitHub</a></h3>
         </section>
-        
+
         <!--
         Here's the script import section
         -->
@@ -62,8 +69,7 @@ Slype is a framework using HTML, CSS, and JavaScript intended in particular for 
         <script src="js/data-handling.js"></script>
         <script src="js/slide-handling.js"></script>
         <script src="js/main.js"></script>
-        
-    </body>
 
+    </body>
 
 </html>

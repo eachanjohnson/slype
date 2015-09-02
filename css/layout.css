@@ -47,7 +47,7 @@ html, body {
 
 /** define arrangement of elements on slides **/
 .slide h2 {
-    font-size: 4.5em;
+    font-size: 5.5vw;
     margin-top: 8.33vh;
     margin-left: 8.33vw;
     margin-right: 8.33vw;
@@ -55,7 +55,7 @@ html, body {
 }
 
 .slide h3 {
-    font-size: 3em;
+    font-size: 3.5vw;
     margin-top: 0vh;
     margin-left: 8.33vw;
     margin-right: 8.33vw;
@@ -63,7 +63,7 @@ html, body {
 }
 
 .slide p, .slide div {
-    font-size: 2.25em;
+    font-size: 2.5vw;
     margin-top: 8.33vh;
     margin-left: 16.67vw;
     margin-right: 8.33vw;
@@ -82,7 +82,7 @@ html, body {
 }
 
 .title-slide h1 {
-    font-size: 4.5em;
+    font-size: 7vw;
     margin-top: 33vh;
     margin-left: 8.33vw;
     margin-left: 8.33vw;
@@ -90,7 +90,7 @@ html, body {
 }
 
 .title-slide h3 {
-    font-size: 2.25em;
+    font-size: 3vw;
     margin-top: 8.33vh;
     margin-right: 8.33vw;
     float: right;
@@ -118,6 +118,15 @@ circle {
 .scatter-series-1 {
     fill: green;
 }
+
+.bar-series-0 {
+    fill: red;
+}
+
+.bar-series-1 {
+    fill: green;
+}
+
 
 .axis path,
 .axis line {
