@@ -6,6 +6,7 @@ function scatterPlot ( data ) {
         h = $graphCanvas.innerHeight(),
         padding = 0.1 * $graphCanvas.innerHeight();
     
+    console.log('Plotting a scatter graph...');
     console.log('Current canvas width is ' + w + ' and current height is ' + h);
     //console.log(data);
     
@@ -27,6 +28,7 @@ function scatterPlot ( data ) {
             .orient('left'),
         noOfSeries = Object.keys(data[0]).length - 1,
         seriesNames = [],
+        xColName = Object.keys(data[0])[0],
         seriesReport = 'Series names: ',
         groups = [],
         colors = ['red', 'green', 'blue'];
@@ -64,7 +66,7 @@ function scatterPlot ( data ) {
             .append('circle')
             .attr('class', 'scatter-series-' + i)
             .attr('cx', function (d) {
-                return scaleX(d['x']);
+                return scaleX(d[xColName]);
             })
             .attr('cy', function (d) {
                 return scaleY(d[seriesNames[i]]);
@@ -85,8 +87,9 @@ function barChart ( data ) {
     var $graphCanvas = $('#current-graph'),
         w = $graphCanvas.innerWidth(),
         h = $graphCanvas.innerHeight(),
-        padding = 0.1 * $graphCanvas.innerHeight();
+        padding = 0.08 * w;
     
+    console.log('Plotting a bar chart...');
     console.log('Current canvas width is ' + w + ' and current height is ' + h);
     //console.log(data);
     
@@ -96,22 +99,25 @@ function barChart ( data ) {
                     .attr('class', 'slype-graph');
     
     var noOfSeries = Object.keys(data[0]).length - 1,
+        xColName = Object.keys(data[0])[0],
         seriesNames = [],
         seriesReport = 'Series names: ',
         groups = [];
     
     var scaleX = d3.scale.linear()
-                        .domain([0, data.length * noOfSeries])
+                        .domain([0, data.length])
                         .range([padding, w - padding / 3]),
         scaleY = d3.scale.linear()
                         .domain([0, 100])
                         .range([h - padding, padding / 3]),
-        axisX = d3.svg.axis()
-            .scale(scaleX)
-            .orient('bottom'),
+//        axisX = d3.svg.axis()
+//            .scale(scaleX)
+//            .orient('bottom'),
         axisY = d3.svg.axis()
             .scale(scaleY)
             .orient('left');
+    
+    var barSpacing = w / (6 * noOfSeries);
     
     for ( var i = 1; i <  Object.keys(data[0]).length; i++ ) {
         var currentSeriesName = Object.keys(data[0])[i];
@@ -119,16 +125,41 @@ function barChart ( data ) {
         seriesReport += currentSeriesName + ' ';
     }
     
-    console.log('There are ' + noOfSeries + ' data series');
+    console.log('There are ' + noOfSeries + ' data series related to ' + xColName);
     console.log(seriesReport);
     
-    svg.append('g').attr('class', 'axis')
-        .attr("transform", "translate(0, " + (h - padding) + ")")
-        .call(axisX);
+//    svg.append('g')
+//        .attr('class', 'axis')
+//        .attr("transform", "translate(0, " + (h - padding) + ")")
+//        .call(axisX);
     
-    svg.append('g').attr('class', 'axis')
-        .attr("transform", "translate(" + padding + ", 0)")
+    svg.append('g')
+        .attr('class', 'axis')
+        .attr("transform", "translate(" + 0.5 * padding + ", 0)")
         .call(axisY);
+    
+    var xValues = svg.append('g')
+                    .attr('class','axis-values'),
+        xLabel = svg.append('g')
+                    .attr('class', 'axis-label');
+    
+    xValues.selectAll('text')
+        .data(data)
+        .enter()
+        .append('text')
+        .attr('y', h - 0.6 * padding)
+        .attr('x', function (d, i) {
+            return scaleX(i) + (w - 4 * padding / 3 ) / (2 * 6);
+        })
+        .text(function (d, i) {
+            return d[xColName];
+        });
+    
+    xLabel.append('text')
+        .attr('x', (w - 4 * padding / 3) / 2)
+        .attr('y', h - 0.1 * padding)
+        .text(xColName);
+            
     
     for ( var i = 0; i < seriesNames.length; i++ ) {
         var currentSeriesName = seriesNames[i],
@@ -139,8 +170,6 @@ function barChart ( data ) {
         
         groups.push(currentGroup);
         
-        var barSpacing = w / (12 * noOfSeries);
-        
         currentGroup.selectAll('rect')
             .data(data)
             .enter()
@@ -148,7 +177,7 @@ function barChart ( data ) {
             .attr('class', 'bar-series-' + i)
             .attr('width',  barSpacing)
             .attr('x', function (d, k) {
-                return scaleX(k * noOfSeries + i);
+                return scaleX(k) + i * barSpacing;
             })
             .attr('y', h - padding)
             .attr('height', 0)
